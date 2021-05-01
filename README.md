@@ -77,3 +77,6 @@ node server
 curl http://localhost:3000/getCounter?name=default
 
 curl -X POST -H "Content-type: application/json" -d "{\"name\":\"default\",\"value\":666}" http://localhost:3000/updateCounter
+
+curl -X DELETE http://localhost:3000/deleteCounte/:name
+

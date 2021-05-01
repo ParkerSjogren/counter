@@ -6,20 +6,19 @@ let router = express.Router()
 
 router.post('/updateCounter', async (req, res) => {
     try {
-        //const params = req.body
+        const params = req.body
 
-        //console.log("req.body is: ",req.body)
+        // console.log("params is:",params)
 
         db.getCollection('counters')
-            .then((counters) => {return counters.findOne({name:'default'})
+            .then((counters) => {return counters.findOne({name: params.name})
             .then((result) =>   {return result._id})
-            .then((id) =>       {return counters.deleteOne({_id: id})})})
+            .then((id) =>       {return counters.updateOne({_id: id},{$set:{"value":params.value}})})})
         // .then(() => {
         //     db.close()
         // })
         
-        counters.createCounter('default',0)    
-        res.send("Hocus Pocus")
+        res.send("Hocus Pocus we did an update")
     }
     catch (error) {
         console.log(error)

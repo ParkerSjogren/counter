@@ -8,9 +8,9 @@ async function createCounter(name, value) {
             console.log("inserted a counter!")
         })    
     })
-    // .then(() => {
-    //     db.close()
-    // })
+    .then(() => {
+        db.close()
+    })
 }
 
 async function findCounterByName(counterName) {
