@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### The server side of things
+in the ..\counter directory run:
+node server
+
+curl http://localhost:3000/getCounter?name=default
+
+curl -X POST -H "Content-type: application/json" -d "{\"name\":\"default\",\"value\":666}" http://localhost:3000/updateCounter
