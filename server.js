@@ -1,4 +1,5 @@
 const getCounter    = require('./routes/getCounter')
+const listCounters  = require('./routes/listCounters')
 const updateCounter = require('./routes/updateCounter')
 const deleteCounter = require('./routes/deleteCounter')
 const insertCounter = require('./routes/insertCounter')
@@ -20,7 +21,8 @@ let allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 // routes
-app.get('/getcounter', getCounter)
+app.get('/getCounter', getCounter)
+app.get('/listCounters', listCounters)
 app.post('/updateCounter', updateCounter)
 app.post('/insertCounter', insertCounter)
 app.delete('/deleteCounter/:name', deleteCounter)

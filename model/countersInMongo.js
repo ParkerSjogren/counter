@@ -1,5 +1,9 @@
 const db = require('./db')
 
+async function getCountersCollection() {
+    return db.getCollection("counters")
+}
+
 async function createCounter(name, value) {
 
     return db.getCollection("counters").then((counters) => {
@@ -8,9 +12,9 @@ async function createCounter(name, value) {
             console.log("inserted a counter!")
         })    
     })
-    .then(() => {
-        db.close()
-    })
+    // .then(() => {
+    //     db.close()
+    // })
 }
 
 async function findCounterByName(counterName) {
@@ -19,7 +23,14 @@ async function findCounterByName(counterName) {
     })
 }
 
+async function listCounters() {
+    let countersCollection = await getCountersCollection()
+    let cursor = countersCollection.find({})
+    return cursor.toArray()
+}
+
 module.exports = {
     createCounter,
-    findCounterByName
+    findCounterByName,
+    listCounters
 }

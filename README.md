@@ -74,11 +74,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 in the ..\counter directory run:
 node server
 
-curl http://localhost:3000/getCounter?name=default
+curl http://localhost:8080/getCounter?name=default
 
-curl -X POST -H "Content-type: application/json" -d "{\"name\":\"default\",\"value\":666}" http://localhost:3000/updateCounter
+curl http://localhost:8080/listCounters
 
-curl -X POST -H "Content-type: application/json" -d "{\"name\":\"parker\",\"value\":666}" http://localhost:3000/insertCounter
+curl -X POST -H "Content-type: application/json" -d "{\"name\":\"default\",\"value\":123}" http://localhost:8080/updateCounter
 
-curl -X DELETE http://localhost:3000/deleteCounte/:name
+curl -X POST -H "Content-type: application/json" -d "{\"name\":\"parker\",\"value\":123}" http://localhost:8080/insertCounter
+
+curl -X DELETE http://localhost:8080/deleteCounter/:name
 

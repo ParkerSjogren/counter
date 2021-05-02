@@ -4,6 +4,7 @@ export default function StatedBasedComponent() {
     const [count,setCount] = useState(0)
 
     function incrementCounter(name,value) {
+        // eslint-disable-next-line
         let params='{"name":' + '"' + name + '"' + "," + '"value":' + value + "}"
 
         console.log("stupid params=",params)
@@ -32,6 +33,12 @@ export default function StatedBasedComponent() {
     
     retrieveCounterValue('default')
 
-    return <div><p>You clicked {count} times</p> <button onClick={() => incrementCounter('default',count+1) }>Click Me</button></div>
+    return (
+       <div>
+            <p>Your counter value: {count}</p> 
+            <button onClick={() => incrementCounter('default',count+1) }>Increment</button>
+            <button onClick={() => incrementCounter('default',count-1) }>Decrement</button>
+        </div>
+    ) 
 }
 
