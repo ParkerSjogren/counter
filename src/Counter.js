@@ -22,7 +22,6 @@ export default function StatedBasedComponent() {
     }
     
     function retrieveCounterValue(name){
-        // poulate investment parameters with default user parameters in our MongoDB 
         
         fetch('http://localhost:8080/getCounter?name=default', {      
             method: "GET",

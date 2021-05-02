@@ -4,7 +4,7 @@ const counters = require('../model/countersInMongo')
 let router = express.Router()
 
 router.get('/getCounter', async (req, res) => {    
-    counterName=req.query.name
+    let counterName=req.query.name
 
     try {
         let counter = await counters.findCounterByName(counterName)
