@@ -8,7 +8,7 @@ router.post('/updateCounter', async (req, res) => {
     try {
         const params = req.body
 
-        // console.log("params is:",params)
+        console.log("params is:",params)
 
         db.getCollection('counters')
             .then((counters) => {return counters.findOne({name: params.name})
