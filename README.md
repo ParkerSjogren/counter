@@ -1,3 +1,43 @@
+Getting started:
+```
+Create a MongoDB database with the name:counter and a collection counters (mongodb://localhost:27017)
+
+At the command prompt and in a directory that you wish to stage the counter application, enter :
+
+git clone https://github.com/ParkerSjogren/counter.git
+
+Change your directory down and into the  .\counter directory and then run:
+
+npm install
+node model\loadInitialCounter
+--> above two commands run only one time for installation
+
+### The server side of things
+in the ..\counter directory run:
+node server
+
+### next the front end
+npm start
+--> run everytime use wish to run the application
+
+
+### The server side of things
+in the ..\counter directory run:
+node server
+
+### the following are curl commands to test the back end
+
+curl http://localhost:8080/getCounter?name=default
+
+curl http://localhost:8080/listCounters
+
+curl -X POST -H "Content-type: application/json" -d "{\"name\":\"default\",\"value\":123}" http://localhost:8080/updateCounter
+
+curl -X POST -H "Content-type: application/json" -d "{\"name\":\"parker\",\"value\":123}" http://localhost:8080/insertCounter
+
+curl -X DELETE http://localhost:8080/deleteCounter/:name
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -69,41 +109,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
-Getting started:
-```
-Create a MongoDB database with the name:counter and a collection counters (mongodb://localhost:27017)
-
-At the command prompt and in a directory that you wish to stage the counter application, enter :
-
-git clone https://github.com/ParkerSjogren/counter.git
-
-Change your directory down and into the  .\counter directory and then run:
-
-npm install
-node model\loadInitialCounter
---> above two commands run only one time for installation
-
-### The server side of things
-in the ..\counter directory run:
-node server
-
-### next the front end
-npm start
---> run everytime use wish to run the application
-
-
-### The server side of things
-in the ..\counter directory run:
-node server
-
-curl http://localhost:8080/getCounter?name=default
-
-curl http://localhost:8080/listCounters
-
-curl -X POST -H "Content-type: application/json" -d "{\"name\":\"default\",\"value\":123}" http://localhost:8080/updateCounter
-
-curl -X POST -H "Content-type: application/json" -d "{\"name\":\"parker\",\"value\":123}" http://localhost:8080/insertCounter
-
-curl -X DELETE http://localhost:8080/deleteCounter/:name
 

@@ -1,12 +1,11 @@
 const express = require('express')
-const { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } = require('react-dom')
 const counters = require('../model/countersInMongo')
 
 let router = express.Router()
 
 router.get('/getCounter', async (req, res) => {    
     let counterName=req.query.name
-console.log('1')
+
     try {
         let counter = await counters.findCounterByName(counterName)
         

@@ -8,7 +8,7 @@ export default function StatedBasedComponent({parm,fcn,idx}) {
         // eslint-disable-next-line
         let params='{"name":' + '"' + name + '"' + "," + '"value":' + value + "}"
 
-        console.log("stupid params=",params)
+        // console.log("stupid params=",params)
     
         fetch('http://localhost:8080/updateCounter', {      
             method: "POST",
