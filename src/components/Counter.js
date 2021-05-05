@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
-export default function StatedBasedComponent() {
+export default function StatedBasedComponent({parm,fcn,idx}) {
+     
     const [count,setCount] = useState(0)
 
     function incrementCounter(name,value) {
@@ -22,23 +23,30 @@ export default function StatedBasedComponent() {
         setCount(userParams.value)
     }
     
-    function retrieveCounterValue(name){
-        
-        fetch('http://localhost:8080/getCounter?name=default', {      
+    function deleteCounter(name){     
+        fetch(`http://localhost:8080/deleteCounter/${name}`, {      
+            method: "delete",
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }).then((response) => {console.log('deleted a counter')})
+        fcn(idx)
+    }
+
+    function retrieveCounterValue(name,value){
+        fetch(`http://localhost:8080/getCounter?name=${name}`, {      
             method: "GET",
             headers: {"Content-type": "application/json; charset=UTF-8"}
-        }).then((response)       => response.json())
-        .then((userParameters) => {setCounterValue(userParameters)})
+        }).then((response)      => response.json()
+        ).then((userParameters) => {setCounterValue(userParameters)})    
     }
     
-    retrieveCounterValue('default')
+    retrieveCounterValue(parm.name,parm.value)
 
-    return (
-       <div>
-            <p>Your counter value: {count}</p> 
-            <button onClick={() => incrementCounter('default',count+1) }>Increment</button>
-            <button onClick={() => incrementCounter('default',count-1) }>Decrement</button>
-        </div>
+    return ( 
+        <>     
+            <td>{count}</td>          
+            <td><button onClick={() => incrementCounter(parm.name,count+1) }>Increment</button></td>
+            <td><button onClick={() => incrementCounter(parm.name,count-1) }>Decrement</button></td>
+            <td><button onClick={() => deleteCounter(parm.name) }>Delete</button></td>
+        </>
     ) 
 }
-
